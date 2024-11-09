@@ -1,0 +1,104 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\Expressdb\\src\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\Expressdb\\src\\services\\clientService.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:services\\clientService.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\CodigoClase6-Bul-RedisCache-Mogoose-mySQL\\EjemploTSExpressSequelize\\src\\services\\clientService.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\Expressdb\\src\\controllers\\clientController.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:controllers\\clientController.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\Expressdb\\src\\routes\\clienteRoutes.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:routes\\clienteRoutes.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\Expressdb\\src\\app.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 396,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "clientService.ts",
+              "DocumentMoniker": "C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\CodigoClase6-Bul-RedisCache-Mogoose-mySQL\\EjemploTSExpressSequelize\\src\\services\\clientService.ts",
+              "RelativeDocumentMoniker": "..\\..\\CodigoClase6-Bul-RedisCache-Mogoose-mySQL\\EjemploTSExpressSequelize\\src\\services\\clientService.ts",
+              "ToolTip": "C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\CodigoClase6-Bul-RedisCache-Mogoose-mySQL\\EjemploTSExpressSequelize\\src\\services\\clientService.ts",
+              "RelativeToolTip": "..\\..\\CodigoClase6-Bul-RedisCache-Mogoose-mySQL\\EjemploTSExpressSequelize\\src\\services\\clientService.ts",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC0AAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-05-29T22:41:41.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "clientService.ts",
+              "DocumentMoniker": "C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\Expressdb\\src\\services\\clientService.ts",
+              "RelativeDocumentMoniker": "services\\clientService.ts",
+              "ToolTip": "C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\Expressdb\\src\\services\\clientService.ts",
+              "RelativeToolTip": "services\\clientService.ts",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAACoAAABiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-05-29T22:18:48.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "clientController.ts",
+              "DocumentMoniker": "C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\Expressdb\\src\\controllers\\clientController.ts",
+              "RelativeDocumentMoniker": "controllers\\clientController.ts",
+              "ToolTip": "C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\Expressdb\\src\\controllers\\clientController.ts",
+              "RelativeToolTip": "controllers\\clientController.ts",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-05-29T22:11:47.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "clienteRoutes.ts",
+              "DocumentMoniker": "C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\Expressdb\\src\\routes\\clienteRoutes.ts",
+              "RelativeDocumentMoniker": "routes\\clienteRoutes.ts",
+              "ToolTip": "C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\Expressdb\\src\\routes\\clienteRoutes.ts",
+              "RelativeToolTip": "routes\\clienteRoutes.ts",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-05-29T22:11:36.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "app.ts",
+              "DocumentMoniker": "C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\Expressdb\\src\\app.ts",
+              "RelativeDocumentMoniker": "app.ts",
+              "ToolTip": "C:\\Users\\pedro\\OneDrive\\Desktop\\fac\\Expressdb\\src\\app.ts",
+              "RelativeToolTip": "app.ts",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-05-29T22:11:22.814Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+# Usa una imagen base oficial de Node.js
+FROM node:14
+
+# Establece el directorio de trabajo
+WORKDIR /usr/src/app
+
+# Copia los archivos del proyecto
+COPY package*.json ./
+COPY tsconfig.json ./
+COPY . .
+
+# Instala las dependencias
+RUN npm install
+
+# Compila el código TypeScript
+RUN npm run build
+
+# Instala PM2 globalmente
+RUN npm install -g pm2
+
+# Copia el archivo ecosystem.config.js
+COPY ecosystem.config.js .
+
+# Expone el puerto de la aplicación
+EXPOSE 3003
+
+# Comando para iniciar la aplicación con PM2
+CMD ["pm2-runtime", "start", "ecosystem.config.js", "--env", "production"]

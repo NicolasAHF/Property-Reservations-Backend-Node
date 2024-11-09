@@ -1,0 +1,299 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.14.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - inmo-network
+  
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.14.0
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    networks:
+      - inmo-network
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - inmo-network
+
+  mongo:
+    image: mongo:4.4
+    container_name: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - inmo-network
+
+  mongo-seed:
+    image: mongo:4.4
+    container_name: mongo-seed
+    depends_on:
+      - mongo
+    volumes:
+      - ./users-service/data/users.json:/data/users.json
+    entrypoint: [
+      "sh", "-c",
+      "until mongo --host mongo --eval 'print(\"waited for connection\")' 2>/dev/null; do sleep 1; done && mongoimport --host mongo --db inmo2 --collection users --file /data/users.json --jsonArray"
+    ]
+    networks:
+      - inmo-network
+  
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - inmo-network
+
+  mysql-reservation:
+    image: mysql:5.7
+    container_name: mysql-reservation
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: reservations
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - inmo-network
+  
+  mysql-properties:
+    image: mysql:5.7
+    container_name: mysql-properties
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: properties
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql-data-properties:/var/lib/mysql
+    networks:
+      - inmo-network
+
+  reservationcommand-service:
+    build: 
+      context: ./reservationcommand-service
+    container_name: reservationcommand-service
+    environment:
+      - RESERVATION_TIMEOUT_SECONDS=300
+      - SCHEDULER_TIME=*/1 * * * *
+      - DB_HOST=mysql-reservation
+      - DB_USER=root
+      - DB_PASS=secret
+      - DB_NAME=reservations
+      - DB_DIALECT=mysql
+      - RABBITMQ_URL=amqp://rabbitmq
+      - USERS_SERVICE_URL=http://users-service:3001
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PAYMENT_SERVICE_URL=http://payment-service:3010
+      - PROPERTY_SERVICE_URL=http://properties-service:3004
+      - RESERVATIONSQUERY_SERVICE_URL=http://reservationquery-service:3003
+    depends_on:
+      - mysql-reservation
+      - rabbitmq
+      - redis
+      - users-service
+      - payment-service
+      - properties-service
+      - reservationquery-service
+    ports:
+      - "3002:3002"
+    networks:
+      - inmo-network
+  
+  reservationquery-service:
+    build: 
+      context: ./reservationquery-service
+    container_name: reservationquery-service
+    environment:
+      - DB_HOST=mysql-reservation
+      - DB_USER=root
+      - DB_PASS=secret
+      - DB_NAME=reservations
+      - DB_DIALECT=mysql
+      - RABBITMQ_URL=amqp://rabbitmq
+      - USERS_SERVICE_URL=http://users-service:3001
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PAYMENT_SERVICE_URL=http://payment-service:3010
+      - PROPERTY_SERVICE_URL=http://properties-service:3004
+      - RESERVATIONSQUERY_SERVICE_URL=http://reservationquery-service:3003
+    depends_on:
+      - mysql-reservation
+      - rabbitmq
+      - redis
+      - users-service
+      - properties-service
+    ports:
+      - "3003:3003"
+    networks:
+      - inmo-network
+
+  users-service:
+    build:
+      context: ./users-service
+    container_name: users-service
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/inmo2
+    ports:
+      - '3001:3001'
+    depends_on:
+      - mongo
+      - mongo-seed
+    networks:
+      - inmo-network
+
+  properties-service:
+    build: 
+      context: ./properties-service
+    container_name: properties-service
+    environment:
+      - DB_HOST=mysql-properties
+      - DB_USER=root
+      - DB_PASS=secret
+      - DB_NAME=properties
+      - DB_DIALECT=mysql
+      - RABBITMQ_URL=amqp://rabbitmq
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - mysql-properties
+      - rabbitmq
+      - redis
+      - users-service
+    ports:
+      - "3004:3004"
+    networks:
+      - inmo-network
+  
+  sensors-service:
+    build:
+      context: ./sensors-service
+    container_name: sensors-service
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/inmo2
+      - RABBITMQ_URL=amqp://rabbitmq:5672
+    depends_on:
+      - mongo
+      - rabbitmq
+    ports:
+      - "3005:3005"
+    networks:
+      - inmo-network
+
+  mysql-payment-db:
+    image: mysql:5.7
+    container_name: mysql-payment-db
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: payment
+    ports:
+      - '3309:3306'
+    volumes:
+      - mysql-payment-data:/var/lib/mysql
+    networks:
+      - inmo-network
+
+  payment-service:
+    build:
+      context: ./payment-service
+    container_name: payment-service
+    environment:
+      - DB_HOST=mysql-payment-db
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_NAME=payment
+      - DB_DIALECT=mysql   
+    ports:
+      - '3010:3010'
+    depends_on:
+      - mysql-payment-db
+    networks:
+      - inmo-network
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+    container_name: api-gateway
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - USERS_SERVICE_URL=http://users-service:3001
+      - RESERVATIONS_SERVICE_URL=http://reservationcommand-service:3002
+      - RESERVATIONSQUERY_SERVICE_URL=http://reservationquery-service:3003
+      - PAYMENT_SERVICE_URL=http://payment-service:3010
+      - PROPERTY_SERVICE_URL=http://properties-service:3004
+      - SENSOR_SERVICE_URL=http://sensors-service:3005
+      - ELASTICSEARCH_HOST=http://elasticsearch:9200
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mysql-reservation
+      - mysql-properties
+      - mysql-payment-db
+      - users-service
+      - reservationcommand-service
+      - reservationquery-service
+      - properties-service
+      - payment-service
+      - mongo
+      - redis
+      - elasticsearch
+    networks:
+      - inmo-network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx 
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - reservationcommand-service
+      - reservationquery-service
+    networks:
+      - inmo-network
+      
+networks:
+  inmo-network:
+
+volumes:
+  mongo-data:
+  mysql-payment-data:
+  mysql-data-properties:
+  mysql-data:
+  redis-data:
+  esdata:
+

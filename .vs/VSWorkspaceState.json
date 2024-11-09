@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\properties-service",
+    "\\properties-service\\src",
+    "\\properties-service\\src\\dtos",
+    "\\properties-service\\src\\routes"
+  ],
+  "SelectedNode": "\\properties-service\\src\\dtos\\AvailableDto.ts",
+  "PreviewInSolutionExplorer": false
+}

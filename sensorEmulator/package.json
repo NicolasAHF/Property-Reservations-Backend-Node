@@ -1,0 +1,28 @@
+{
+  "name": "sensors-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/app.js",
+    "start:emulator": "ts-node sensorEmulator.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.4",
+    "axios": "^1.7.2",
+    "elasticsearch": "^16.7.3",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.1",
+    "nodemailer": "^6.9.13",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.2",
+    "typescript": "^5.4.5"
+  }
+}

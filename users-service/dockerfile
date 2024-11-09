@@ -1,0 +1,19 @@
+# users-service/Dockerfile
+FROM node:14
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+RUN npm install -g ts-node
+
+COPY . .
+
+COPY data /usr/src/app/data
+
+EXPOSE 3001
+
+CMD [ "npm", "start" ]
+

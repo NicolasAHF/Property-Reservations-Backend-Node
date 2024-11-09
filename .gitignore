@@ -1,0 +1,38 @@
+# Dependencias
+node_modules/
+
+# Archivos de configuración de entorno
+.env
+.env.local
+.env.*.local
+
+# Directorios de salida del compilador
+dist/
+build/
+out/
+
+# Archivos de registro
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema de archivos
+.DS_Store
+Thumbs.db
+
+# Archivos específicos del editor o IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime*
+*.code-workspace
+
+# Otros archivos y directorios que suelen ser específicos de proyectos
+coverage/
+tmp/
+temp/
+/.vs/slnx.sqlite
+*.vsidx
+/.vs/Obligatorio-229992-275723-270806/v17/.wsuo

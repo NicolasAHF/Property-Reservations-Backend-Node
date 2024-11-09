@@ -1,0 +1,122 @@
+[
+  {
+    "document": "12345678",
+    "documentType": "C.I",
+    "name": "Juan",
+    "surname": "Perez",
+    "email": "juan.perez@example.com",
+    "phoneNumber": "+59891234567",
+    "role": "Administrador",
+    "password": "password123",
+    "bankAccountId": "23456",
+    "country": "USA"
+  },
+  {
+    "document": "87654321",
+    "documentType": "DNI",
+    "name": "Maria",
+    "surname": "Gomez",
+    "email": "maria.gomez@example.com",
+    "phoneNumber": "+59876543210",
+    "role": "Operario",
+    "password": "password123",
+    "bankAccountId": "23456",
+    "country": "USA"
+  },
+  {
+    "document": "11223344",
+    "documentType": "C.I",
+    "name": "Carlos",
+    "surname": "Lopez",
+    "email": "carlos.lopez@example.com",
+    "phoneNumber": "+59898765432",
+    "role": "Propietario",
+    "password": "password123",
+    "bankAccountId": "23456",
+    "country": "USA"
+  },
+  {
+    "document": "99887766",
+    "documentType": "C.I",
+    "name": "Lucia",
+    "surname": "Fernandez",
+    "email": "lucia.fernandez@example.com",
+    "phoneNumber": "+59893456789",
+    "role": "Administrador",
+    "password": "password123",
+    "bankAccountId": "23456",
+    "country": "USA"
+  },
+  {
+    "document": "66554433",
+    "documentType": "DNI",
+    "name": "Miguel",
+    "surname": "Rodriguez",
+    "email": "miguel.rodriguez@example.com",
+    "phoneNumber": "+59894567890",
+    "role": "Operario",
+    "password": "password123",
+    "bankAccountId": "23456",
+    "country": "USA"
+  },
+  {
+    "document": "55443322",
+    "documentType": "C.I",
+    "name": "Laura",
+    "surname": "Garcia",
+    "email": "laura.garcia@example.com",
+    "phoneNumber": "+59895678901",
+    "role": "Propietario",
+    "password": "password123",
+    "bankAccountId": "23456",
+    "country": "USA"
+  },
+  {
+    "document": "44332211",
+    "documentType": "C.I",
+    "name": "Sofia",
+    "surname": "Martinez",
+    "email": "sofia.martinez@example.com",
+    "phoneNumber": "+59897865432",
+    "role": "Inquilino",
+    "password": "password123",
+    "bankAccountId": "23456",
+    "country": "USA"
+  },
+  {
+    "document": "33445566",
+    "documentType": "DNI",
+    "name": "Javier",
+    "surname": "Diaz",
+    "email": "javier.diaz@example.com",
+    "phoneNumber": "+59896543210",
+    "role": "Inquilino",
+    "password": "password123",
+    "bankAccountId": "23456",
+    "country": "USA"
+  },
+  {
+    "document": "22334455",
+    "documentType": "C.I",
+    "name": "Valeria",
+    "surname": "Suarez",
+    "email": "valeria.suarez@example.com",
+    "phoneNumber": "+59895432109",
+    "role": "Inquilino",
+    "password": "$2a$12$g9Q4n5H7u26OBSjSsbfxs.FJKP5UpWPVYqX03Z7TN01y2n4nnbmiC",
+    "bankAccountId": "23456",
+    "country": "USA"
+  },
+  {
+    "document": "11224455",
+    "documentType": "C.I",
+    "name": "Roberto",
+    "surname": "Alvarez",
+    "email": "roberto.alvarez@example.com",
+    "phoneNumber": "+59894321098",
+    "role": "Inquilino",
+    "password": "$2a$12$g9Q4n5H7u26OBSjSsbfxs.FJKP5UpWPVYqX03Z7TN01y2n4nnbmiC",
+    "bankAccountId": "23456",
+    "country": "USA"
+  }
+]

@@ -1,0 +1,20 @@
+# Base image
+FROM node:18
+
+# Set working directory
+WORKDIR /usr/src/app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm install
+RUN npm install -g ts-node
+
+# Copy source code
+COPY . .
+
+# Expose port
+EXPOSE 3000
+EXPOSE 9229
+
+# Start the gateway with inspector
+CMD ["node", "--inspect=0.0.0.0:9229", "-r", "ts-node/register", "src/index.ts"]
